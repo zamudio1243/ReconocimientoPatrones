@@ -164,5 +164,19 @@ public class Herramientas {
         
         
     }
+
+    public static int[][] multiplicadorMatrices(int[][] a, int[][] b){
+        int[][] c = new int[a.length][b[0].length];
+        for (int i = 0; i < c.length; i++) {
+            for (int j = 0; j < c[i].length ; j++) {
+                c[i][j] = 0;
+                for (int k = 0; k < a[0].length ; k++) {
+                    c[i][j]+= a[i][k]*b[k][j];
+                }
+            }
+        }
+        return c;
+    }
+
     
 }
