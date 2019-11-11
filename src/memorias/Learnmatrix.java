@@ -27,7 +27,7 @@ public class Learnmatrix {
     }
 
     public void aprendizaje(){
-        for (int i = 0; i < y.length; i++) {
+        for (int i = 0; i < x.length; i++) {
             // Recorre patrones
             int clase= x[i][x[i].length -1];
             for (int j = 0; j < x[i].length -1; j++) {
@@ -85,8 +85,8 @@ public class Learnmatrix {
 
     public int[][] transformarAPatron(int[][] a){
         int[][] patron = transpuesta(a,false);
-        int max = Integer.MIN_VALUE;
         for (int i = 0; i < patron.length ; i++) {
+            int max = Integer.MIN_VALUE;
             for (int j = 0; j < patron[i].length; j++) {
                 if (max < patron[i][j])
                     max = patron[i][j];
