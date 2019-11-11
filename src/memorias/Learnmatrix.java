@@ -46,6 +46,7 @@ public class Learnmatrix {
         double efectividad = 0.0;
         int[][] trans = transpuesta(p,true);
         int[][] result = Herramientas.multiplicadorMatrices(this.m,trans);
+        //verificar esto
         int[][] claseResult = transformarAPatron(result);
         for (int i = 0; i < y.length ; i++) {
             int aux = 0;
@@ -59,6 +60,7 @@ public class Learnmatrix {
         }
         return  efectividad / y.length * 100;
     }
+
     public  int[][] transpuesta(int[][] p, boolean clase){
         int[][] trans;
         if(clase){
