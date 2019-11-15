@@ -2,19 +2,19 @@ package memorias;
 /*
 Hector noviembre 2019
 Clasificador supervisado-heteroasociativo
-basado en la Learnmatrix de Setinbuch
+basado en la Learnmatrix de Steinbuch
 para patrones binarios equis de
 */
 
 import herramientasclasificadores.Herramientas;
 
-public class Learnmatrix {
+public class Lernmatrix {
     private int[][] x; // patrones
     private int[][] y; // clases
     private int[][] m; // memoria
     private int E; // epsilon
 
-    public Learnmatrix(int[][] x, int[][] y, int e) {
+    public Lernmatrix(int[][] x, int[][] y, int e) {
         this.x = x;
         this.y = y;
         this.E = e;
@@ -58,7 +58,7 @@ public class Learnmatrix {
             if (aux == y.length)
                 efectividad+=1;
         }
-        return  efectividad / y.length * 100;
+        return  efectividad / x.length * 100;
     }
 
     public  int[][] transpuesta(int[][] p, boolean clase){
@@ -112,35 +112,5 @@ public class Learnmatrix {
         }
     }
 
-    public int[][] getX() {
-        return x;
-    }
 
-    public void setX(int[][] x) {
-        this.x = x;
-    }
-
-    public int[][] getY() {
-        return y;
-    }
-
-    public void setY(int[][] y) {
-        this.y = y;
-    }
-
-    public int[][] getM() {
-        return m;
-    }
-
-    public void setM(int[][] m) {
-        this.m = m;
-    }
-
-    public int getE() {
-        return E;
-    }
-
-    public void setE(int e) {
-        E = e;
-    }
 }

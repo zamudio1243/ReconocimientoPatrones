@@ -5,6 +5,8 @@
  */
 package herramientasclasificadores;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Hector
@@ -33,9 +35,16 @@ public class Patron {
          this.claseResultante = "Desconocida";
     }
 
-    public double[] getVector() {
-        return vector;
+    public void desplazar(Patron p){
+        double[] vector  = new double[p.getVector().length];
+        for (int i = 0; i < p.getVector().length ; i++) {
+            vector[i] = this.getVector()[i] - p.getVector()[i];
+        }
+        this.setVector(vector);
     }
+
+    public double[] getVector() {  return vector;  }
+
 
     public void setVector(double[] vector) {
         this.vector = vector;
@@ -57,8 +66,18 @@ public class Patron {
     public void setClaseResultante(String claseResultante) {
         this.claseResultante = claseResultante;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        String aux = "Vector= ";
+        for (int i = 0; i < this.getVector().length; i++) {
+            aux+= String.format("[%5.1f]",this.getVector()[i]);
+        }
+        aux+= "\n Clase:" + this.clase;
+        aux+= "\n Clase Resultante:" + this.claseResultante;
+        return  aux;
+    }
+
     @Override
     public boolean equals(Object obj) {
         Patron aux= (Patron)obj;
@@ -69,6 +88,7 @@ public class Patron {
         return true;
         
     }
+
     
     
     
