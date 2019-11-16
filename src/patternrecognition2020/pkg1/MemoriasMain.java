@@ -32,8 +32,12 @@ public class MemoriasMain {
     }
     public static void cap(){
         ArrayList<Patron> conjFundamental = new ArrayList<>();
-        conjFundamental.add(new Patron(new double[]{2.1,3.8},"uno"));
-        conjFundamental.add(new Patron(new double[]{6.3,3.8},"dos"));
+        //conjFundamental.add(new Patron(new double[]{2.1,3.8},"uno"));
+        //conjFundamental.add(new Patron(new double[]{6.3,3.8},"dos"));
+        conjFundamental.add(new Patron(new double[]{2.0,3.0,6.0},"uno"));
+        conjFundamental.add(new Patron(new double[]{6.0,8.0,10.0},"dos"));
+        conjFundamental.add(new Patron(new double[]{1.9,3.8,5.5},"uno"));
+        conjFundamental.add(new Patron(new double[]{6.4,7.2,9.7},"dos"));
         CAP cap = new CAP(conjFundamental);
         cap.aprendizaje();
         cap.mostrarMemoria();

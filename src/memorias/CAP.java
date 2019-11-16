@@ -21,7 +21,7 @@ public class CAP implements Memoria {
             if(!y.contains(i.getClase()))
                 y.add(i.getClase());
         }
-        this.m = new double[y.size()][x.size()];
+        this.m = new double[y.size()][x.get(0).getVector().length];
     }
 
     @Override
@@ -34,40 +34,6 @@ public class CAP implements Memoria {
                 this.m[iClase][j]+= this.m[iClase][j] + i.getVector()[j];
             }
         }
-    }
-
-    private ArrayList<Patron> desplazarPatrones(Patron centroide) {
-        ArrayList<Patron> aux = new ArrayList<>();
-        //double[] vector  = new double[this.x.get(0).getVector().length];
-        for (Patron i: this.x) {
-            double[] vector  = new double[this.x.get(0).getVector().length];
-            for (int j = 0; j < i.getVector().length ; j++) {
-                vector[j] = i.getVector()[j] - centroide.getVector()[j];
-            }
-            aux.add(new Patron(vector,i.getClase()));
-        }
-        return aux;
-    }
-
-    private Patron calcularcentroide() {
-        Patron aux = new Patron(this.x.get(0).getVector().length);
-        for (int i = 0; i < this.x.get(0).getVector().length; i++) {
-            for (int j = 0; j < this.x.size(); j++) {
-                aux.getVector()[i] = aux.getVector()[i] + x.get(j).getVector()[i] ;
-            }
-            aux.getVector()[i]/= x.size();
-        }
-        return  aux;
-    }
-    private Patron calcularcentroide(ArrayList<Patron> patrons) {
-        Patron aux = new Patron(patrons.get(0).getVector().length);
-        for (int i = 0; i < patrons.get(0).getVector().length; i++) {
-            for (int j = 0; j < patrons.size(); j++) {
-                aux.getVector()[i] = aux.getVector()[i] + patrons.get(j).getVector()[i] ;
-            }
-            aux.getVector()[i]/= patrons.size();
-        }
-        return  aux;
     }
 
     @Override
@@ -89,8 +55,40 @@ public class CAP implements Memoria {
             patron.setClaseResultante(y.get(indiceClase));
             System.out.println(patron.toString());
         }
+    }
 
+    private ArrayList<Patron> desplazarPatrones(Patron centroide) {
+        ArrayList<Patron> aux = new ArrayList<>();
+        //double[] vector  = new double[this.x.get(0).getVector().length];
+        for (Patron i: this.x) {
+            double[] vector  = new double[this.x.get(0).getVector().length];
+            for (int j = 0; j < i.getVector().length ; j++) {
+                vector[j] = i.getVector()[j] - centroide.getVector()[j];
+            }
+            aux.add(new Patron(vector,i.getClase()));
+        }
+        return aux;
+    }
+    private Patron calcularcentroide() {
+        Patron aux = new Patron(this.x.get(0).getVector().length);
+        for (int i = 0; i < this.x.get(0).getVector().length; i++) {
+            for (int j = 0; j < this.x.size(); j++) {
+                aux.getVector()[i] = aux.getVector()[i] + x.get(j).getVector()[i] ;
+            }
+            aux.getVector()[i]/= x.size();
+        }
+        return  aux;
+    }
 
+    private Patron calcularcentroide(ArrayList<Patron> patrons) {
+        Patron aux = new Patron(patrons.get(0).getVector().length);
+        for (int i = 0; i < patrons.get(0).getVector().length; i++) {
+            for (int j = 0; j < patrons.size(); j++) {
+                aux.getVector()[i] = aux.getVector()[i] + patrons.get(j).getVector()[i] ;
+            }
+            aux.getVector()[i]/= patrons.size();
+        }
+        return  aux;
     }
     public void mostrarMemoria(){
         System.out.println("Memoria\n");
